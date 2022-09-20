@@ -18,6 +18,14 @@ cd app
 # build Docker images and start up application in background
 docker-compose up -d
 
+# create engine databse
+docker exec -it app_postgres_1 bash
+psql -U postgres
+CREATE DATABASE engine;
+/q
+exit
+docker restart app_web_1
+
 # apply database migrations
 docker-compose run engine python manage.py migrate
 ```
