@@ -27,7 +27,8 @@ exit
 docker restart app_web_1
 
 # apply database migrations
-docker-compose run engine python manage.py migrate
+docker exec -it web_app_1 bash
+python manage.py migrate
 ```
 
 The engine should now be available at localhost:8000. Try opening localhost:8000/engine/api in a web browser.
